@@ -9,7 +9,7 @@
         }
     },
 
-    "content-layer": {
+    "content_layer": {
         "views": {
             "main": "index.html"
         },
@@ -22,7 +22,7 @@
         }
     },
 
-    "settings-layer": {
+    "settings_layer": {
         "views": {
             "main": "index.html"
         },
@@ -35,7 +35,7 @@
         }
     },
 
-    "backend-layer": {
+    "backend_layer": {
         "views": {
             "main": "index.html"
         },
