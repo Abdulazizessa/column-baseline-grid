@@ -158,3 +158,10 @@ ehthumbs.db
 ##########################################
 # Add your repo-specific overrides below #
 ##########################################
+
+# The production folder is created via the “serve” task in Gulp. Should this folder
+# be renamed in the future, it **must** also be updated in the file “gulpfile.js”.
+prod/
+
+# The Node-specific modules, which are created anew via “npm install”.
+node_modules/
