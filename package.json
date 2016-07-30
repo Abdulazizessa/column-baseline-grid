@@ -1,48 +1,48 @@
 {
-  "name": "column-baseline-grid",
-  "version": "2.0.0",
-  "description": "An extension for the Google Chrome browser, column-baseline-grid is a simple modular grid that can be used by web developers to mimic grids used in design comps and by designers to verify design translations by developers.",
-  "main": "gulpfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/code-warrior/column-baseline-grid.git"
-  },
-  "bugs": {
-    "url": "https://github.com/code-warrior/column-baseline-grid/issues"
-  },
-  "homepage": "https://github.com/code-warrior/column-baseline-grid#readme",
-  "keywords": [
-    "column",
-    "baseline",
-    "leading",
-    "modular",
-    "web",
-    "development",
-    "comps",
-    "design",
-    "grid"
-  ],
-  "author": "Roy Vanegas",
-  "contributors": [
-    {
-      "name": "Saman Tehrani",
-      "email": "samanrtehrani@gmail.com ",
-      "url": "http://samantehrani.com"
+    "name": "column-baseline-grid",
+    "version": "2.0.0",
+    "description": "An extension for the Google Chrome browser, column-baseline-grid is a simple modular grid that can be used by web developers to mimic grids used in design comps and by designers to verify design translations by developers.",
+    "main": "gulpfile.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
-    {
-      "name": "Roy Vanegas",
-      "email": "roy@thecodeeducators.com",
-      "url": "http://roy.vanegas.org"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/code-warrior/column-baseline-grid.git"
+    },
+    "bugs": {
+        "url": "https://github.com/code-warrior/column-baseline-grid/issues"
+    },
+    "homepage": "https://github.com/code-warrior/column-baseline-grid#readme",
+    "keywords": [
+        "column",
+        "baseline",
+        "leading",
+        "modular",
+        "web",
+        "development",
+        "comps",
+        "design",
+        "grid"
+    ],
+    "author": "Roy Vanegas",
+    "contributors": [
+        {
+            "name": "Saman Tehrani",
+            "email": "samanrtehrani@gmail.com ",
+            "url": "http://samantehrani.com"
+        },
+        {
+            "name": "Roy Vanegas",
+            "email": "roy@thecodeeducators.com",
+            "url": "http://roy.vanegas.org"
+        }
+    ],
+    "engines": {
+        "node": ">=v0.12.2"
+    },
+    "license": "CC-BY-SA-4.0",
+    "devDependencies": {
+        "gulp": "^3.9.1"
     }
-  ],
-  "engines": {
-    "node": ">=v0.12.2"
-  },
-  "license": "CC-BY-SA-4.0",
-  "devDependencies": {
-    "gulp": "^3.9.1"
-  }
 }
