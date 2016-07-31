@@ -76,8 +76,6 @@ gulp.task('validateHTML', function () {
             return;
     }
 
-    process.stdout.write(pathToHTMLFile);
-
     return gulp.src(pathToHTMLFile)
         .pipe(new HTMLValidator());
 });
