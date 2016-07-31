@@ -133,7 +133,7 @@ gulp.task('compileCSS', function () {
                 'The layer in which you’re working has not been set. Precede ' +
                 'this task\n\twith either the setLayerToContent or the ' +
                 'setLayerToSettings task to set\n\tit. For example, to ' +
-                'compile the mail.css file in the content-layer\n\tfolder, ' +
+                'compile the main.css file in the content-layer\n\tfolder, ' +
                 'type\n\n\t\tgulp setLayerToContent compileCSS' +
                 color.default + '\n\n'
         );
