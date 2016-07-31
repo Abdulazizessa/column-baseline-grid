@@ -165,3 +165,7 @@ prod/
 
 # The Node-specific modules, which are created anew via “npm install”.
 node_modules/
+
+# Ignore the CSS created by Sass.
+dev/content-layer/main.css
+dev/settings-layer/main.css
