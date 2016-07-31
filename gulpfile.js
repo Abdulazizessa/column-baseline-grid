@@ -7,10 +7,13 @@ var gulp = require('gulp'),
     browserSpecificPrefixGenerator = require('gulp-autoprefixer'),
     config = require('./config.json'),
     color = config.colors,
+    folders = config.folders,
+    files = config.files,
     layer = null,
     pathToHTMLFile = null,
     pathToSassFile = null,
-    pathToCSSFolder = null;
+    pathToCSSFolder = null,
+    pathToCSSFile = null;
 
 /**
  * SET THE LAYER IN WHICH YOU’RE WORKING
@@ -151,4 +154,57 @@ gulp.task('compileCSS', function () {
             browsers: ['last 2 versions']
         }))
         .pipe(gulp.dest(pathToCSSFolder));
+});
+
+/**
+ * VALIDATE CSS
+ *
+ * The task layer must first be set in order for both the compileCSS and this task
+ * to run. Call this task as such:
+ *
+ *      gulp setLayerToContent validateCSS
+ *      gulp setLayerToSettings validateCSS
+ */
+gulp.task('validateCSS', ['compileCSS'], function () {
+    'use strict';
+
+    switch (layer) {
+    case 'content-layer/':
+        pathToCSSFile =
+            config.folders.development +
+            config.folders.layers.content +
+            config.content_layer.styles.source;
+
+        break;
+
+    case 'settings-layer/':
+        pathToCSSFile =
+            config.folders.development +
+            config.folders.layers.settings +
+            config.settings_layer.styles.source;
+
+        break;
+
+    default:
+        process.stdout.write(
+            '\n\t' +
+                color.red +
+                'The layer in which you’re working has not been set. Precede ' +
+                'this task\n\twith either the setLayerToContent or the ' +
+                'setLayerToSettings task to set\n\tit. For example, to ' +
+                'validate the main.css file in the content-layer\n\tfolder, ' +
+                'type\n\n\t\tgulp setLayerToContent validateCSS' +
+                color.default + '\n\n'
+        );
+
+        return;
+    }
+
+    return gulp.src(pathToCSSFile)
+        .pipe(new CSSValidator())
+        .pipe(
+            gulp.dest(
+                folders.validator.results.css + files.validator.results.css
+            )
+        );
 });

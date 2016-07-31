@@ -6,6 +6,19 @@
             "content": "content-layer/",
             "settings": "settings-layer/",
             "backend": "backend-layer/"
+        },
+        "validator": {
+            "results": {
+                "css": "validator-results/css/"
+            }
+        }
+    },
+
+    "files": {
+        "validator": {
+            "results": {
+                "css": "css-results.json"
+            }
         }
     },
 
