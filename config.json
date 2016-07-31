@@ -17,8 +17,8 @@
             "main": "main.js"
         },
         "styles": {
-            "main": "main.css"
             "source": "main.scss",
+            "target": "main.css"
         }
     },
 
@@ -30,8 +30,8 @@
             "main": "main.js"
         },
         "styles": {
-            "main": "main.css"
             "source": "main.scss",
+            "target": "main.css"
         }
     },
 
