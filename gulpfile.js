@@ -1,6 +1,7 @@
 /*jslint node: true */
 
 var gulp = require('gulp'),
+    CSSCompiler = require('gulp-sass'),
     HTMLValidator = require('gulp-html'),
     browserSpecificPrefixGenerator = require('gulp-autoprefixer'),
     config = require('./config.json'),
