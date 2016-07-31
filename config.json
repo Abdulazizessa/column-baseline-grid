@@ -17,8 +17,8 @@
             "main": "main.js"
         },
         "styles": {
-            "sass": "main.scss",
             "main": "main.css"
+            "source": "main.scss",
         }
     },
 
@@ -30,8 +30,8 @@
             "main": "main.js"
         },
         "styles": {
-            "sass": "main.scss",
             "main": "main.css"
+            "source": "main.scss",
         }
     },
 
