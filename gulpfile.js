@@ -46,35 +46,35 @@ gulp.task('validateHTML', function () {
     'use strict';
 
     switch (layer) {
-        case 'content-layer/':
-            pathToHTMLFile =
-                config.folders.development +
-                config.folders.layers.content +
-                config.content_layer.views.main;
+    case 'content-layer/':
+        pathToHTMLFile =
+            config.folders.development +
+            config.folders.layers.content +
+            config.content_layer.views.main;
 
-            break;
+        break;
 
-        case 'settings-layer/':
-            pathToHTMLFile =
-                config.folders.development +
-                config.folders.layers.settings +
-                config.settings_layer.views.main;
+    case 'settings-layer/':
+        pathToHTMLFile =
+            config.folders.development +
+            config.folders.layers.settings +
+            config.settings_layer.views.main;
 
-            break;
+        break;
 
-        default:
-            process.stdout.write(
-                '\n\t' +
-                    color.red +
-                    'The layer in which you’re working has not been set. Precede ' +
-                    'this task\n\twith either the setLayerToContent or the ' +
-                    'setLayerToSettings task to set\n\tit. For example, to ' +
-                    'validate the index.html file in the content-layer\n\tfolder, ' +
-                    'type\n\n\t\tgulp setLayerToContent validateHTML' +
-                    color.default + '\n\n'
-            );
+    default:
+        process.stdout.write(
+            '\n\t' +
+                color.red +
+                'The layer in which you’re working has not been set. Precede ' +
+                'this task\n\twith either the setLayerToContent or the ' +
+                'setLayerToSettings task to set\n\tit. For example, to ' +
+                'validate the index.html file in the content-layer\n\tfolder, ' +
+                'type\n\n\t\tgulp setLayerToContent validateHTML' +
+                color.default + '\n\n'
+        );
 
-            return;
+        return;
     }
 
     return gulp.src(pathToHTMLFile)
