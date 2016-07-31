@@ -202,9 +202,5 @@ gulp.task('validateCSS', ['compileCSS'], function () {
 
     return gulp.src(pathToCSSFile)
         .pipe(new CSSValidator())
-        .pipe(
-            gulp.dest(
-                folders.validator.results.css + files.validator.results.css
-            )
-        );
+        .pipe(gulp.dest(folders.validator.results.css));
 });

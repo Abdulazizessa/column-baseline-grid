@@ -14,14 +14,6 @@
         }
     },
 
-    "files": {
-        "validator": {
-            "results": {
-                "css": "css-results.json"
-            }
-        }
-    },
-
     "content_layer": {
         "views": {
             "main": "index.html"
