@@ -3,6 +3,7 @@
 var gulp = require('gulp'),
     HTMLValidator = require('gulp-html'),
     CSSCompiler = require('gulp-sass'),
+    CSSValidator = require('gulp-w3c-css'),
     browserSpecificPrefixGenerator = require('gulp-autoprefixer'),
     config = require('./config.json'),
     color = config.colors,
