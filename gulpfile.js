@@ -13,7 +13,6 @@ var gulp = require('gulp'),
  * Calling either of the following three tasks simply sets the layer variable
  * according to the objects defined in the config.json file.
  */
-
 gulp.task('setLayerToContent', function () {
     'use strict';
 
