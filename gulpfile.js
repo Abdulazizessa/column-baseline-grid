@@ -7,7 +7,9 @@ var gulp = require('gulp'),
     config = require('./config.json'),
     color = config.colors,
     layer = null,
-    pathToHTMLFile = null;
+    pathToHTMLFile = null,
+    pathToSassFile = null,
+    pathToCSSFolder = null;
 
 /**
  * SET THE LAYER IN WHICH YOU’RE WORKING
@@ -81,6 +83,71 @@ gulp.task('validateHTML', function () {
         .pipe(new HTMLValidator());
 });
 
+/**
+ * COMPILE CSS
+ *
+ * Using Sass, compile the file pathToSassFile and write the final CSS document to
+ * the pathToCSSFolder. The final CSS file will be formatted with 2-space
+ * indentations. Any floating-point calculations will be carried out 10 places, and
+ * browser-specific prefixes will be added to support 2 browser versions behind all
+ * current browsers’ versions.
+ *
+ * Like the validateHTML task, this task too cannot be run on its own. A layer must
+ * be set first, as such:
+ *
+ *      gulp setLayerToContent compileCSS
+ *      gulp setLayerToSettings compileCSS
+ */
+gulp.task('compileCSS', function () {
+    'use strict';
 
+    switch (layer) {
+    case 'content-layer/':
+        pathToSassFile =
+            config.folders.development +
+            config.folders.layers.content +
+            config.content_layer.styles.source;
 
+        pathToCSSFolder =
+            config.folders.development +
+            config.folders.layers.content;
 
+        break;
+
+    case 'settings-layer/':
+        pathToSassFile =
+            config.folders.development +
+            config.folders.layers.settings +
+            config.settings_layer.styles.source;
+
+        pathToCSSFolder =
+            config.folders.development +
+            config.folders.layers.settings;
+
+        break;
+
+    default:
+        process.stdout.write(
+            '\n\t' +
+                color.red +
+                'The layer in which you’re working has not been set. Precede ' +
+                'this task\n\twith either the setLayerToContent or the ' +
+                'setLayerToSettings task to set\n\tit. For example, to ' +
+                'compile the mail.css file in the content-layer\n\tfolder, ' +
+                'type\n\n\t\tgulp setLayerToContent compileCSS' +
+                color.default + '\n\n'
+        );
+
+        return;
+    }
+
+    return gulp.src(pathToSassFile)
+        .pipe(new CSSCompiler({
+            outputStyle: 'expanded',
+            precision: 10
+        }).on('error', CSSCompiler.logError))
+        .pipe(browserSpecificPrefixGenerator({
+            browsers: ['last 2 versions']
+        }))
+        .pipe(gulp.dest(pathToCSSFolder));
+});
