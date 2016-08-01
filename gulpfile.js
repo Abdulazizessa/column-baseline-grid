@@ -59,17 +59,17 @@ gulp.task('validateHTML', function () {
     switch (layer) {
     case 'content-layer/':
         pathToHTMLFile =
-                config.folders.development +
-                config.folders.layers.content +
-                config.content_layer.views.main;
+                folders.development +
+                folders.layers.content +
+                contentLayer.views.main;
 
         break;
 
     case 'settings-layer/':
         pathToHTMLFile =
-                config.folders.development +
-                config.folders.layers.settings +
-                config.settings_layer.views.main;
+                folders.development +
+                folders.layers.settings +
+                settingsLayer.views.main;
 
         break;
 
@@ -107,17 +107,17 @@ gulp.task('validateCSS', ['compileCSS'], function () {
     switch (layer) {
     case 'content-layer/':
         pathToCSSFile =
-                config.folders.development +
-                config.folders.layers.content +
-                config.content_layer.styles.source;
+                folders.development +
+                folders.layers.content +
+                contentLayer.styles.source;
 
         break;
 
     case 'settings-layer/':
         pathToCSSFile =
-                config.folders.development +
-                config.folders.layers.settings +
-                config.settings_layer.styles.source;
+                folders.development +
+                folders.layers.settings +
+                settingsLayer.styles.source;
 
         break;
 
@@ -162,25 +162,25 @@ gulp.task('compileCSS', function () {
     switch (layer) {
     case 'content-layer/':
         pathToSassFile =
-                config.folders.development +
-                config.folders.layers.content +
-                config.content_layer.styles.source;
+                folders.development +
+                folders.layers.content +
+                contentLayer.styles.source;
 
         pathToCSSFolder =
-                config.folders.development +
-                config.folders.layers.content;
+                folders.development +
+                folders.layers.content;
 
         break;
 
     case 'settings-layer/':
         pathToSassFile =
-                config.folders.development +
-                config.folders.layers.settings +
-                config.settings_layer.styles.source;
+                folders.development +
+                folders.layers.settings +
+                settingsLayer.styles.source;
 
         pathToCSSFolder =
-                config.folders.development +
-                config.folders.layers.settings;
+                folders.development +
+                folders.layers.settings;
 
         break;
 
