@@ -16,9 +16,9 @@ var gulp = require('gulp'),
     layer = null,
     pathToHTMLFile = null,
     pathToSassFile = null,
-    pathToCSSFolder = null,
-    pathToCSSFile = null;
+    pathToCSSFile = null,
     pathToJSFile = null,
+    pathToCSSFolder = null;
 
 /**
  * SET THE LAYER IN WHICH YOU’RE WORKING
