@@ -88,6 +88,55 @@ gulp.task('validateHTML', function () {
 });
 
 /**
+ * VALIDATE CSS
+ *
+ * The task layer must first be set in order for both the compileCSS and this task
+ * to run. Call this task as such:
+ *
+ *      gulp setLayerToContent validateCSS
+ *      gulp setLayerToSettings validateCSS
+ */
+gulp.task('validateCSS', ['compileCSS'], function () {
+    'use strict';
+
+    switch (layer) {
+        case 'content-layer/':
+            pathToCSSFile =
+                config.folders.development +
+                config.folders.layers.content +
+                config.content_layer.styles.source;
+
+            break;
+
+        case 'settings-layer/':
+            pathToCSSFile =
+                config.folders.development +
+                config.folders.layers.settings +
+                config.settings_layer.styles.source;
+
+            break;
+
+        default:
+            process.stdout.write(
+                '\n\t' +
+                color.red +
+                'The layer in which you’re working has not been set. Precede ' +
+                'this task\n\twith either the setLayerToContent or the ' +
+                'setLayerToSettings task to set\n\tit. For example, to ' +
+                'validate the main.css file in the content-layer\n\tfolder, ' +
+                'type\n\n\t\tgulp setLayerToContent validateCSS' +
+                color.default + '\n\n'
+            );
+
+            return;
+    }
+
+    return gulp.src(pathToCSSFile)
+        .pipe(new CSSValidator())
+        .pipe(gulp.dest(folders.validator.results.css));
+});
+
+/**
  * COMPILE CSS
  *
  * Using Sass, compile the file pathToSassFile and write the final CSS document to
@@ -154,53 +203,4 @@ gulp.task('compileCSS', function () {
             browsers: ['last 2 versions']
         }))
         .pipe(gulp.dest(pathToCSSFolder));
-});
-
-/**
- * VALIDATE CSS
- *
- * The task layer must first be set in order for both the compileCSS and this task
- * to run. Call this task as such:
- *
- *      gulp setLayerToContent validateCSS
- *      gulp setLayerToSettings validateCSS
- */
-gulp.task('validateCSS', ['compileCSS'], function () {
-    'use strict';
-
-    switch (layer) {
-    case 'content-layer/':
-        pathToCSSFile =
-            config.folders.development +
-            config.folders.layers.content +
-            config.content_layer.styles.source;
-
-        break;
-
-    case 'settings-layer/':
-        pathToCSSFile =
-            config.folders.development +
-            config.folders.layers.settings +
-            config.settings_layer.styles.source;
-
-        break;
-
-    default:
-        process.stdout.write(
-            '\n\t' +
-                color.red +
-                'The layer in which you’re working has not been set. Precede ' +
-                'this task\n\twith either the setLayerToContent or the ' +
-                'setLayerToSettings task to set\n\tit. For example, to ' +
-                'validate the main.css file in the content-layer\n\tfolder, ' +
-                'type\n\n\t\tgulp setLayerToContent validateCSS' +
-                color.default + '\n\n'
-        );
-
-        return;
-    }
-
-    return gulp.src(pathToCSSFile)
-        .pipe(new CSSValidator())
-        .pipe(gulp.dest(folders.validator.results.css));
 });
