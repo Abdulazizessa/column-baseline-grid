@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     HTMLValidator = require('gulp-html'),
     CSSCompiler = require('gulp-sass'),
     CSSValidator = require('gulp-w3c-css'),
+    JSLinter = require('gulp-eslint'),
     browserSpecificPrefixGenerator = require('gulp-autoprefixer'),
     config = require('./config.json'),
     color = config.colors,
@@ -16,6 +17,7 @@ var gulp = require('gulp'),
     pathToSassFile = null,
     pathToCSSFolder = null,
     pathToCSSFile = null;
+    pathToJSFile = null,
 
 /**
  * SET THE LAYER IN WHICH YOU’RE WORKING
@@ -206,6 +208,83 @@ gulp.task('compileCSS', function () {
         }))
         .pipe(gulp.dest(pathToCSSFolder));
 });
+
+/**
+ * LINT JAVASCRIPT
+ *
+ * This task lints JavaScript using the linter defined by JSLinter. Like the other
+ * tasks, a layer must be set before running this task, as such:
+ *
+ *      gulp setLayerToBackend lintJS
+ *      gulp setLayerToSettings lintJS
+ *
+ * Note: This task does not write any files to a destination folder.
+ */
+gulp.task('lintJS', function () {
+    'use strict';
+
+    switch (layer) {
+    case 'content-layer/':
+        pathToJSFile =
+                folders.development +
+                folders.layers.content +
+                contentLayer.controllers.main;
+
+        break;
+
+    case 'settings-layer/':
+        pathToJSFile =
+                folders.development +
+                folders.layers.settings +
+                settingsLayer.controllers.main;
+
+        break;
+
+    case 'backend-layer/':
+        pathToJSFile =
+                folders.development +
+                folders.layers.content +
+                backendLayer.controllers.main;
+
+        break;
+
+
+    default:
+        process.stdout.write(
+            '\n\t' +
+                color.red +
+                'The layer in which you’re working has not been set. Precede ' +
+                'this task\n\twith either the setLayerToContent, ' +
+                'setLayerToSettings, or\n\tsetLayerToBackend task to set it. For ' +
+                'example, to validate the main.js\n\tfile in the ' +
+                'content-layer folder, type\n\n\t\t' +
+                'gulp setLayerToContent lintJS' +
+                color.default + '\n\n'
+        );
+
+        return;
+    }
+
+    return gulp.src(pathToJSFile)
+        .pipe(new JSLinter({
+            rules: {
+                indent: [2, 4],
+                quotes: [2, 'single'],
+                'linebreak-style': [2, 'unix'],
+                semi: [2, 'always'],
+                'max-len': [2, 85, 4]
+            },
+            env: {
+                es6: true,
+                node: true,
+                browser: true
+            },
+            extends: 'eslint:recommended'
+        }))
+        .pipe(JSLinter.formatEach('compact', process.stderr))
+        .pipe(JSLinter.failAfterError());
+});
+
 
 /**
  * CLEAN
