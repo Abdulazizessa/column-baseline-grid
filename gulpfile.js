@@ -99,25 +99,25 @@ gulp.task('validateCSS', ['compileCSS'], function () {
     'use strict';
 
     switch (layer) {
-        case 'content-layer/':
-            pathToCSSFile =
-                config.folders.development +
-                config.folders.layers.content +
-                config.content_layer.styles.source;
+    case 'content-layer/':
+        pathToCSSFile =
+            config.folders.development +
+            config.folders.layers.content +
+            config.content_layer.styles.source;
 
-            break;
+        break;
 
-        case 'settings-layer/':
-            pathToCSSFile =
-                config.folders.development +
-                config.folders.layers.settings +
-                config.settings_layer.styles.source;
+    case 'settings-layer/':
+        pathToCSSFile =
+            config.folders.development +
+            config.folders.layers.settings +
+            config.settings_layer.styles.source;
 
-            break;
+        break;
 
-        default:
-            process.stdout.write(
-                '\n\t' +
+    default:
+        process.stdout.write(
+            '\n\t' +
                 color.red +
                 'The layer in which you’re working has not been set. Precede ' +
                 'this task\n\twith either the setLayerToContent or the ' +
@@ -125,9 +125,9 @@ gulp.task('validateCSS', ['compileCSS'], function () {
                 'validate the main.css file in the content-layer\n\tfolder, ' +
                 'type\n\n\t\tgulp setLayerToContent validateCSS' +
                 color.default + '\n\n'
-            );
+        );
 
-            return;
+        return;
     }
 
     return gulp.src(pathToCSSFile)
