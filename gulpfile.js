@@ -56,17 +56,17 @@ gulp.task('validateHTML', function () {
     switch (layer) {
     case 'content-layer/':
         pathToHTMLFile =
-            config.folders.development +
-            config.folders.layers.content +
-            config.content_layer.views.main;
+                config.folders.development +
+                config.folders.layers.content +
+                config.content_layer.views.main;
 
         break;
 
     case 'settings-layer/':
         pathToHTMLFile =
-            config.folders.development +
-            config.folders.layers.settings +
-            config.settings_layer.views.main;
+                config.folders.development +
+                config.folders.layers.settings +
+                config.settings_layer.views.main;
 
         break;
 
@@ -104,17 +104,17 @@ gulp.task('validateCSS', ['compileCSS'], function () {
     switch (layer) {
     case 'content-layer/':
         pathToCSSFile =
-            config.folders.development +
-            config.folders.layers.content +
-            config.content_layer.styles.source;
+                config.folders.development +
+                config.folders.layers.content +
+                config.content_layer.styles.source;
 
         break;
 
     case 'settings-layer/':
         pathToCSSFile =
-            config.folders.development +
-            config.folders.layers.settings +
-            config.settings_layer.styles.source;
+                config.folders.development +
+                config.folders.layers.settings +
+                config.settings_layer.styles.source;
 
         break;
 
@@ -159,25 +159,25 @@ gulp.task('compileCSS', function () {
     switch (layer) {
     case 'content-layer/':
         pathToSassFile =
-            config.folders.development +
-            config.folders.layers.content +
-            config.content_layer.styles.source;
+                config.folders.development +
+                config.folders.layers.content +
+                config.content_layer.styles.source;
 
         pathToCSSFolder =
-            config.folders.development +
-            config.folders.layers.content;
+                config.folders.development +
+                config.folders.layers.content;
 
         break;
 
     case 'settings-layer/':
         pathToSassFile =
-            config.folders.development +
-            config.folders.layers.settings +
-            config.settings_layer.styles.source;
+                config.folders.development +
+                config.folders.layers.settings +
+                config.settings_layer.styles.source;
 
         pathToCSSFolder =
-            config.folders.development +
-            config.folders.layers.settings;
+                config.folders.development +
+                config.folders.layers.settings;
 
         break;
 
@@ -222,26 +222,26 @@ gulp.task('clean', function () {
         removableFolders = [
             folders.validator_results,
             folders.development +
-                folders.layers.content +
-                contentLayer.styles.target,
+                    folders.layers.content +
+                    contentLayer.styles.target,
             folders.development +
-                folders.layers.settings +
-                settingsLayer.styles.target
+                    folders.layers.settings +
+                    settingsLayer.styles.target
         ];
 
     for (index = 0; index < removableFolders.length; index += 1) {
         try {
             fileSystem.accessSync(removableFolders[index], fileSystem.F_OK);
             process.stdout.write('\n\t' + color.green + removableFolders[index] +
-                color.default + ' was found and ' + color.green + 'will' +
-                color.default + ' be deleted.\n');
+                    color.default + ' was found and ' + color.green + 'will' +
+                    color.default + ' be deleted.\n');
             remover(removableFolders[index]);
         } catch (error) {
             if (error) {
                 process.stdout.write('\n\t' + color.red + removableFolders[index] +
-                    color.default + ' does ' + color.red + 'not' + color.default +
-                    ' exist or is ' + color.red + 'not' + color.default +
-                    ' accessible.\n');
+                        color.default + ' does ' + color.red + 'not' + color.default +
+                        ' exist or is ' + color.red + 'not' + color.default +
+                        ' accessible.\n');
             }
         }
     }
