@@ -23,19 +23,19 @@ var gulp = require('gulp'),
 gulp.task('setLayerToContent', function () {
     'use strict';
 
-    layer = config.folders.layers.content;
+    layer = folders.layers.content;
 });
 
 gulp.task('setLayerToSettings', function () {
     'use strict';
 
-    layer = config.folders.layers.settings;
+    layer = folders.layers.settings;
 });
 
 gulp.task('setLayerToBackend', function () {
     'use strict';
 
-    layer = config.folders.layers.backend;
+    layer = folders.layers.backend;
 });
 
 /**
