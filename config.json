@@ -7,11 +7,7 @@
             "settings": "settings-layer/",
             "backend": "backend-layer/"
         },
-        "validator": {
-            "results": {
-                "css": "validator-results/css/"
-            }
-        }
+        "validator_results": "validator-results/"
     },
 
     "content_layer": {
