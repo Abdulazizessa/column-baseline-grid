@@ -329,3 +329,27 @@ gulp.task('clean', function () {
 
     process.stdout.write('\n');
 });
+
+/**
+ * COPY UNPROCESSED FILE STO THE PRODUCTION FOLDER
+ *
+ * This task copies all assets that aren’t processed by other tasks. Thus, CSS, for
+ * example, isn’t copied by this asset, but images, JavaScript, HTML, language
+ * locales, and JSON files *are* copied by this task.
+ */
+gulp.task('copyUnprocessedFilesToProdFolder', function () {
+    'use strict';
+
+    return gulp.src([
+        folders.development + '*.*',
+        folders.development + '**',
+        '!' + folders.development +
+                folders.layers.settings +
+                settingsLayer.styles.source,
+        '!' + folders.development +
+                folders.layers.content +
+                contentLayer.styles.source
+    ], {dot: true})
+        .pipe(gulp.dest(folders.production));
+});
+
