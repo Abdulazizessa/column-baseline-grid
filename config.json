@@ -1,6 +1,7 @@
 {
     "folders": {
         "development": "dev/",
+        "production": "prod/",
         "images": "img/",
         "layers": {
             "content": "content-layer/",
