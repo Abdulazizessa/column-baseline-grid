@@ -352,4 +352,3 @@ gulp.task('copyUnprocessedFilesToProdFolder', function () {
     ], {dot: true})
         .pipe(gulp.dest(folders.production));
 });
-
