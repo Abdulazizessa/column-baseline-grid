@@ -301,6 +301,7 @@ gulp.task('clean', function () {
         index,
         removableFolders = [
             folders.validator_results,
+            folders.production,
             folders.development +
                     folders.layers.content +
                     contentLayer.styles.target,
