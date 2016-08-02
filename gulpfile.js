@@ -320,9 +320,9 @@ gulp.task('clean', function () {
         } catch (error) {
             if (error) {
                 process.stdout.write('\n\t' + color.red + removableFolders[index] +
-                        color.default + ' does ' + color.red + 'not' + color.default +
-                        ' exist or is ' + color.red + 'not' + color.default +
-                        ' accessible.\n');
+                        color.default + ' does ' + color.red + 'not' +
+                        color.default + ' exist or is ' + color.red + 'not' +
+                        color.default + ' accessible.\n');
             }
         }
     }
