@@ -286,7 +286,6 @@ gulp.task('lintJS', function () {
         .pipe(JSLinter.failAfterError());
 });
 
-
 /**
  * CLEAN
  *
