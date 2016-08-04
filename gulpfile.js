@@ -7,6 +7,8 @@ var gulp = require('gulp'),
     CSSValidator = require('gulp-w3c-css'),
     JSLinter = require('gulp-eslint'),
     browserSpecificPrefixGenerator = require('gulp-autoprefixer'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload,
     config = require('./config.json'),
     color = config.colors,
     folders = config.folders,
@@ -351,3 +353,39 @@ gulp.task('copyUnprocessedFilesToProdFolder', function () {
     ], {dot: true})
         .pipe(gulp.dest(folders.production));
 });
+
+/**
+ * SERVE CONTENT LAYER
+ *
+ * Unlike the other tasks, this one may be called directly, without the need to
+ * establish the layer in which you’re working. Thus, it’s run as such:
+ *
+ *      gulp serveContentLayer
+ */
+gulp.task('serveContentLayer', ['setLayerToContent', 'compileCSS', 'lintJS'],
+    function () {
+        'use strict';
+
+        browserSync({
+            notify: true,
+            port: 9000,
+            browser: 'google chrome',
+            server: folders.development + folders.layers.content
+        });
+
+        gulp.watch(
+            folders.development +
+                folders.layers.content +
+                contentLayer.styles.source,
+            ['compileCSS']
+        )
+            .on('change', reload);
+
+        gulp.watch(
+            folders.development +
+                folders.layers.content +
+                contentLayer.controllers.main,
+            ['lintJS']
+        )
+            .on('change', reload);
+    });
