@@ -424,3 +424,25 @@ gulp.task('serveSettingsLayer', [
         )
             .on('change', reload);
     });
+
+/**
+ * SERVE BACKEND LAYER
+ *
+ * Like the other serve-based tasks, this one may be called directly, without the
+ * need to establish the layer in which you’re working, because the layer is
+ * mentioned in the task’s name. Run as such:
+ *
+ *      gulp serveBackendLayer
+ */
+gulp.task('serveBackendLayer', ['setLayerToBackend', 'lintJS'],
+    function () {
+        'use strict';
+
+        gulp.watch(
+            folders.development +
+                folders.layers.backend +
+                backendLayer.controllers.main,
+            ['lintJS']
+        )
+            .on('change', reload);
+    });
