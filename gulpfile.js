@@ -366,13 +366,6 @@ gulp.task('serveContentLayer', ['setLayerToContent', 'compileCSS', 'lintJS'],
     function () {
         'use strict';
 
-        browserSync({
-            notify: true,
-            port: 9000,
-            browser: 'google chrome',
-            server: folders.development + folders.layers.content
-        });
-
         gulp.watch(
             folders.development +
                 folders.layers.content +
@@ -406,13 +399,6 @@ gulp.task('serveSettingsLayer', [
     'lintJS'],
     function () {
         'use strict';
-
-        browserSync({
-            notify: true,
-            port: 9000,
-            browser: 'google chrome',
-            server: folders.development + folders.layers.settings
-        });
 
         gulp.watch(
             folders.development +
