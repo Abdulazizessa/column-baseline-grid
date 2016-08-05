@@ -38,9 +38,6 @@
     },
 
     "backend_layer": {
-        "views": {
-            "main": "index.html"
-        },
         "controllers": {
             "main": "main.js"
         }
