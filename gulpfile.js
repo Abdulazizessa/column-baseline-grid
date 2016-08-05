@@ -416,24 +416,24 @@ gulp.task('serveSettingsLayer', [
 
         gulp.watch(
             folders.development +
-            folders.layers.settings +
-            settingsLayer.views.main,
+                folders.layers.settings +
+                settingsLayer.views.main,
             ['validateHTML']
         )
             .on('change', reload);
 
         gulp.watch(
             folders.development +
-            folders.layers.settings +
-            settingsLayer.styles.source,
+                folders.layers.settings +
+                settingsLayer.styles.source,
             ['compileCSS']
         )
             .on('change', reload);
 
         gulp.watch(
             folders.development +
-            folders.layers.settings +
-            settingsLayer.controllers.main,
+                folders.layers.settings +
+                settingsLayer.controllers.main,
             ['lintJS']
         )
             .on('change', reload);
