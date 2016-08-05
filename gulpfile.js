@@ -389,3 +389,52 @@ gulp.task('serveContentLayer', ['setLayerToContent', 'compileCSS', 'lintJS'],
         )
             .on('change', reload);
     });
+
+/**
+ * SERVE SETTINGS LAYER
+ *
+ * Like the serveContentLayer, this task may be called directly, without the need to
+ * establish the layer in which you’re working, because the layer is mentioned in
+ * this task’s name. Run this task as such:
+ *
+ *      gulp serveSettingsLayer
+ */
+gulp.task('serveSettingsLayer', [
+    'setLayerToSettings',
+    'validateHTML',
+    'compileCSS',
+    'lintJS'],
+    function () {
+        'use strict';
+
+        browserSync({
+            notify: true,
+            port: 9000,
+            browser: 'google chrome',
+            server: folders.development + folders.layers.settings
+        });
+
+        gulp.watch(
+            folders.development +
+            folders.layers.settings +
+            settingsLayer.views.main,
+            ['validateHTML']
+        )
+            .on('change', reload);
+
+        gulp.watch(
+            folders.development +
+            folders.layers.settings +
+            settingsLayer.styles.source,
+            ['compileCSS']
+        )
+            .on('change', reload);
+
+        gulp.watch(
+            folders.development +
+            folders.layers.settings +
+            settingsLayer.controllers.main,
+            ['lintJS']
+        )
+            .on('change', reload);
+    });
